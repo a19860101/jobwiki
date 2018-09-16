@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
         <a href="index.php" class="navbar-brand">JOBWIKI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navi"
@@ -14,3 +14,5 @@
         </div>
     </div>
 </nav>
+<div class="container-fluid">
+    <div class="row">

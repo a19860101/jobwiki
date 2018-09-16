@@ -16,26 +16,34 @@
 <!--內容-->
 <div class="col-md-9 p-5">
     <h2>分類</h2>
-
+    <hr>
+    <h3>新增職務</h3>
+    <form name="tripleplay" action="" method="post">
+        <select name='List1' onchange="fillSelect(this.value,this.form['List2'])">
+            <option selected>主分類</option>
+        </select>
+        &nbsp;
+        <select name='List2' onchange="fillSelect(this.value,this.form['List3'])">
+            <option selected>子分類</option>
+        </select>
+        &nbsp;
+        <!-- <select name='List3' onchange="getValue(this.value, this.form['List2'].value, 
+    this.form['List1'].value)">
+        <option selected >Make a selection</option> -->
+        <input type="text" name="job">
+        <input type="submit" value="新增職務" name="newjob"> 
+    </select>
+    </form>
     <hr>
     <?php
-        $sql_1 = "SELECT DISTINCT c_list1 FROM `categories`";
+        $sql_1 = "SELECT c_name FROM `categories`";
         $result_1 = mysqli_query($conn,$sql_1);
     ?>
+    <h3>所有職務</h3>
     <ul class="nav flex-column">
         <?php while($row_1=mysqli_fetch_assoc($result_1)){?>
         <li class="nav-item dropdown">
-            <?php echo $row_1["c_list1"]?>
-            <ul>
-                <?php 
-                    $sql_2 = "SELECT DISTINCT c_list1,c_list2 FROM `categories`";
-                    $result_2 = mysqli_query($conn,$sql_2);
-                    while($row_2=mysqli_fetch_assoc($result_2)){
-                    if($row_2["c_list1"]==$row_1["c_list1"]){
-                ?>
-               <li><?php echo $row_2["c_list2"]?></li>
-                <?php }}?>
-            </ul>
+            <?php echo $row_1["c_name"];?>
         </li>
         <?php }?>
     </ul>
