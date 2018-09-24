@@ -10,3 +10,4 @@ $conn = new mysqli($host,$user,$pw,$db);
         die("database error".connect_error);
     }
 $conn->query("SET NAMES utf8");
+session_start();

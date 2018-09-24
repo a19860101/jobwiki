@@ -3,28 +3,30 @@
     include "include/header.php";
     include "include/nav.php";
     include "include/sidebar.php";
+    require_once "../config/function.php";
+    access_denied();
 ?>
 <?php
     if(isset($_POST["newjob"])){
         $l1 = $_POST["List1"];
         $l2 = $_POST["List2"];
-        $job = $_POST["job"];
+          $job = $_POST["job"];
         $sql = "INSERT INTO `categories`(c_list1,c_list2,c_name)VALUES('$l1','$l2','$job')";
         mysqli_query($conn,$sql);
     }
 ?>
 <!--內容-->
-<div class="col-md-9 p-5">
+<div class="container">
+    <div class="row">
+<div class="col-md-12 p-5">
     <h2>分類</h2>
-
-    <hr>
     <?php
         $sql_1 = "SELECT DISTINCT c_list1 FROM `categories`";
         $result_1 = mysqli_query($conn,$sql_1);
     ?>
-    <ul class="nav flex-column">
+    <ul class="list-group">
         <?php while($row_1=mysqli_fetch_assoc($result_1)){?>
-        <li class="nav-item dropdown">
+        <li class="list-group-item">
             <?php echo $row_1["c_list1"]?>
             <ul>
                 <?php 
@@ -40,6 +42,8 @@
         <?php }?>
     </ul>
 
+</div>
+</div>
 </div>
 <script>
 /*
@@ -101,6 +105,5 @@ navigator.appName == "Microsoft Internet Explorer" ? attachEvent('onload', init,
 
 </script>
 <!---->
-</div>
-</div>
+
 <?php include "include/footer.php"; ?>

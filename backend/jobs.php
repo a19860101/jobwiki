@@ -9,45 +9,55 @@
         $l1 = $_POST["List1"];
         $l2 = $_POST["List2"];
         $job = $_POST["job"];
-        $sql = "INSERT INTO `categories`(c_list1,c_list2,c_name)VALUES('$l1','$l2','$job')";
+        $no = $_POST["no"];
+        $sql = "INSERT INTO `categories`(c_list1,c_list2,c_name,c_no)VALUES('$l1','$l2','$job','$no')";
         mysqli_query($conn,$sql);
     }
 ?>
 <!--內容-->
-<div class="col-md-9 p-5">
-    <h2>分類</h2>
+<div class="container">
+    <div class="row">
+<div class="col-md-12 p-5">
+    <h2>職務</h2>
     <hr>
     <h3>新增職務</h3>
     <form name="tripleplay" action="" method="post">
-        <select name='List1' onchange="fillSelect(this.value,this.form['List2'])">
+        <select name='List1' onchange="fillSelect(this.value,this.form['List2'])" class="form-control">
             <option selected>主分類</option>
         </select>
         &nbsp;
-        <select name='List2' onchange="fillSelect(this.value,this.form['List3'])">
+        <select name='List2' onchange="fillSelect(this.value,this.form['List3'])" class="form-control">
             <option selected>子分類</option>
         </select>
         &nbsp;
         <!-- <select name='List3' onchange="getValue(this.value, this.form['List2'].value, 
     this.form['List1'].value)">
         <option selected >Make a selection</option> -->
-        <input type="text" name="job">
-        <input type="submit" value="新增職務" name="newjob"> 
+        <div class="form-group">
+            <input type="text" name="job" placeholder="職務名稱"  class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="no" placeholder="編號"  class="form-control">
+        </div>
+        <input type="submit" value="新增職務" name="newjob" class="btn btn-info"> 
     </select>
     </form>
     <hr>
     <?php
-        $sql_1 = "SELECT c_name FROM `categories`";
+        $sql_1 = "SELECT c_name,c_id FROM `categories`";
         $result_1 = mysqli_query($conn,$sql_1);
     ?>
     <h3>所有職務</h3>
     <ul class="nav flex-column">
         <?php while($row_1=mysqli_fetch_assoc($result_1)){?>
         <li class="nav-item dropdown">
-            <?php echo $row_1["c_name"];?>
+            <a href="job_detail.php?id=<?php echo $row_1["c_id"];?>"><?php echo $row_1["c_name"];?></a>
         </li>
         <?php }?>
     </ul>
 
+</div>
+</div>
 </div>
 <script>
 /*
@@ -109,6 +119,4 @@ navigator.appName == "Microsoft Internet Explorer" ? attachEvent('onload', init,
 
 </script>
 <!---->
-</div>
-</div>
 <?php include "include/footer.php"; ?>

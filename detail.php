@@ -18,6 +18,7 @@
                 $sql_detail = "SELECT * FROM `jobs` WHERE c_id =".$cid;
                 $result_detail = mysqli_query($conn,$sql_detail);
                 $row_detail = mysqli_fetch_assoc($result_detail);
+                echo $row_detail["j_define"];
             ?>
             
         </div>
