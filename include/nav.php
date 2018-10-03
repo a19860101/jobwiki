@@ -1,11 +1,14 @@
 <nav class="navbar navbar-expand-md navbar-light">
-    <div class="container">
-        <a href="index.php" class="navbar-brand">JOBWIKI</a>
+    <div class="container-fluid">
+        <a href="index.php" class="navbar-brand">
+            <!-- <img src="images/logo-text@0.5x.png" alt=""> -->
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navi"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navi">
+            
             <ul class="navbar-nav ml-auto">
                 <?php if(isset($_SESSION['NAME'])){ ?>
                     <li class="nav-item"><a href="logout.php?logout=true" class="nav-link">登出</a></li>

@@ -1,5 +1,7 @@
 <?php 
     require_once "../config/database.php";
+    require_once "../config/function.php";
+    access_denied();
     include "include/header.php";
     include "include/nav.php";
     include "include/sidebar.php";
