@@ -2,21 +2,13 @@
     require_once "config/database.php";
     include "include/header.php";
     include "include/nav.php";
+    include "include/sidebar.php";
+    include "include/search_.php";
 ?>
-<style>
-    .z-container {
-        width: calc(100% - 250px);
-        float: left;
-        padding-left: 50px;
-    }
-    h4 {
-        font-weight: 800;
-    }
-</style>
-<?php include "include/sidebar.php";?>
-<div class="z-container">
-    <div class="col-md-9 pt-5">
-        <!-- <ul class="list-group"> -->
+
+<div class="z-container pt-5">
+<hr>
+    <div class="wrapper">
         <?php 
             $li1 = $_GET["list1"];
             if(isset($li1)){
@@ -37,7 +29,6 @@
                     <a class="text-info" href="detail.php?cid=<?php echo $row_list2["c_id"];?>&cname=<?php echo $row_list2["c_name"];?>"><?php echo $row_list2["c_name"];?></a>
                 </h4>
         <?php } ?>
-            <!-- </ul> -->
         
     </div>
 

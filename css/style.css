@@ -1,3 +1,48 @@
 * {
     font-family: "Microsoft JhengHei";
 }
+/* SIDEBAR */
+body,html {
+    height: 100%;
+}
+#z-nav {
+    width: 250px;
+    float: left;
+    height: 150%;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+#z-nav .logo {
+    margin-bottom: 50px;
+    position: relative;
+    top: -50px;
+    text-align: center;
+}
+#z-nav .logo img {
+    width: 150px;
+}
+#z-nav ul {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: -80px;
+    /* background: #eee; */
+    background-image: linear-gradient(to right,#fff,#eee);
+    padding-top: 50px;
+    padding-left: 30px;
+    height: 100%;
+}
+#z-nav .list2 {
+    display: none;
+}
+
+.z-container {
+    width: calc(100% - 250px);
+    float: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+h4 {
+    font-weight: 800;
+}

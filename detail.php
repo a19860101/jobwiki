@@ -9,18 +9,11 @@
     // $sql_2 = "SELECT DISTINCT c_list2 FROM `categories`";
     // $result_2 = mysqli_query($conn,$sql_2);
 ?>
-<style>
-    .z-container {
-        width: calc(100% - 250px);
-        float: left;
-        padding-left: 50px;
-    }
-    h4 {
-        font-weight: 800;
-    }
-</style>
+
 <?php include "include/sidebar.php";?>
-<div class="z-container">
+<?php include "include/search_.php";?>
+<div class="z-container pt-5">
+<hr>
     <div class="wrapper">
     <?php
                 $cid = $_GET["cid"];
@@ -28,6 +21,9 @@
                 $result_detail = mysqli_query($conn,$sql_detail);
                 $row_detail = mysqli_fetch_assoc($result_detail);
             ?>
+            <div class="text-right">
+                <a href="edit.php?jid=<?php echo $row_detail["j_id"];?>" class="btn btn-info">編輯</a>
+            </div>
             <h2 class="text-info"><?php echo $_GET["cname"]?></h2>
             <h4 class="mt-5">職務定義</h4>
             <p>

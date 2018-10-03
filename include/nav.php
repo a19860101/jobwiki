@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light">
     <div class="container-fluid">
         <a href="index.php" class="navbar-brand">
-            <!-- <img src="images/logo-text@0.5x.png" alt=""> -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navi"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
