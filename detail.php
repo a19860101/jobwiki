@@ -21,9 +21,11 @@
                 $result_detail = mysqli_query($conn,$sql_detail);
                 $row_detail = mysqli_fetch_assoc($result_detail);
             ?>
+            <?php if(isset($_SESSION["NAME"])){ ?>
             <div class="text-right">
-                <a href="edit.php?jid=<?php echo $row_detail["j_id"];?>" class="btn btn-info">編輯</a>
+                <a href="edit.php?cid=<?php echo $row_detail["c_id"];?>" class="btn btn-info">編輯</a>
             </div>
+            <?php } ?>
             <h2 class="text-info"><?php echo $_GET["cname"]?></h2>
             <h4 class="mt-5">職務定義</h4>
             <p>
@@ -35,7 +37,7 @@
             </p>
             <h4  class="mt-5">相似職務</h4>
             <p>
-                <?php echo $row_detail["j_define"];?>
+                <?php echo $row_detail["j_similar"];?>
             </p>
             <h4  class="mt-5">須具備專業能力</h4>
             <p>

@@ -14,14 +14,15 @@
                         $cid = $_GET["id"];
                         $jdefine = $_POST["define"];
                         $jcontent = $_POST["content"];
+                        $jsimilar = $_POST["similar"];
                         $jability = $_POST["ability"];
                         $jsalary = $_POST["salary"];
                         $jworktime = $_POST["worktime"];
                         $jpath = $_POST["path"];
                         $jedu = $_POST["edu"];
                         $mid = $_SESSION["ID"];
-                        $sql_new = "INSERT INTO `jobs`(j_define,j_content,j_ability,j_salary,j_worktime,j_path,j_edu,c_id,m_id)
-                        VALUES('$jdefine','$jcontent','$jability','$jsalary','$jworktime','$jpath','$jedu',{$cid},{$mid})";
+                        $sql_new = "INSERT INTO `jobs`(j_define,j_content,j_similar,j_ability,j_salary,j_worktime,j_path,j_edu,c_id,m_id)
+                        VALUES('$jdefine','$jcontent','$jsimilar','$jability','$jsalary','$jworktime','$jpath','$jedu',{$cid},{$mid})";
                         mysqli_query($conn,$sql_new);
                         header("Location:jobs.php");
                     }
@@ -29,6 +30,7 @@
                     if(isset($_POST["edit"])){
                         $define = $_POST["define"];
                         $content = $_POST["content"];
+                        $similar = $_POST["similar"];
                         $ability = $_POST["ability"];
                         $salary = $_POST["salary"];
                         $worktime = $_POST["worktime"];
@@ -38,6 +40,7 @@
                         $sql_edit = "UPDATE `jobs` SET 
                         j_define='$define',
                         j_content='$content',
+                        j_similar='$similar',
                         j_ability = '$ability',
                         j_salary = '$salary',
                         j_worktime = '$worktime',
@@ -79,7 +82,7 @@
             </div>
             <div class="form-group">
                 <label>相似職務</label>
-                <textarea class="form-control" rows="10" name="editor2" id="editor2"></textarea>
+                <textarea class="form-control" rows="10" name="similar" id="similar"></textarea>
             </div>
             <div class="form-group">
                 <label>須具備專業能力</label>
@@ -120,7 +123,7 @@
             </div>
             <div class="form-group">
                 <label>相似職務</label>
-                <textarea class="form-control" rows="10" name="editor2" id="editor2"><?php echo $row["j_content"];?></textarea>
+                <textarea class="form-control" rows="10" name="similar" id="similar"><?php echo $row["j_similar"];?></textarea>
             </div>
             <div class="form-group">
                 <label>須具備專業能力</label>
@@ -156,7 +159,7 @@
 </div>
 <script>
     CKEDITOR.replace( 'editor' );
-    CKEDITOR.replace( 'editor2' );
+    CKEDITOR.replace( 'similar' );
     CKEDITOR.replace( 'salary' );
     CKEDITOR.replace( 'worktime' );
     CKEDITOR.replace( 'ability' );

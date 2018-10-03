@@ -12,31 +12,31 @@
         </div>
     </div>
     <div class="row py-3 align-items-center">
-        <div class="col-md-4">
-            <div class="nav">
+        <div class="col-md-4 text-right">
+            <!-- <div> -->
             <?php 
                 $sql_left = "SELECT DISTINCT c_list1 FROM `categories` ORDER BY c_list1 ASC LIMIT 5";
                 $r_left = mysqli_query($conn,$sql_left);
                 while($row_l = mysqli_fetch_assoc($r_left)){
             ?>
-                <a href="list2.php?list1=<?php echo $row_l["c_list1"];?>" class="nav-link ml-auto"><?php echo $row_l["c_list1"];?></a>
+                <div><a href="list2.php?list1=<?php echo $row_l["c_list1"];?>" class="nav-link ml-auto"><?php echo $row_l["c_list1"];?></a></div>
             <?php } ?>
-            </div>
+            <!-- </div> -->
         </div>
         <div class="col-md-4 text-center">
             <img src="images/logo.png" alt="JobWiki Logo" class="img-fluid">
         </div>
         <div class="col-md-4">
-            <div class="nav">
+            <!-- <div> -->
             <?php 
                 $sql_right = "SELECT DISTINCT c_list1 FROM `categories` ORDER BY c_list1 DESC LIMIT 5 ";
                 $r_right = mysqli_query($conn,$sql_right);
                 while($row_r = mysqli_fetch_assoc($r_right)){
                 
             ?>
-                <a href="list2.php?list1=<?php echo $row_r["c_list1"];?>" class="nav-link"><?php echo $row_r["c_list1"];?></a>
+                <div><a href="list2.php?list1=<?php echo $row_r["c_list1"];?>" class="nav-link"><?php echo $row_r["c_list1"];?></a></div>
             <?php } ?>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
