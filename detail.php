@@ -193,9 +193,10 @@
     <div class="works">
     	<h2 class="text-info mt-5 font-weight-bold">工作經驗談</h2>
     	<hr>
-    	<div class="work">
-    		
-    	</div>
+		<h3 style="font-size:24px" class="font-weight-bold mb-3">熱門文章</h3>
+    	<div class="work"></div>
+		<h3 style="font-size:24px" class="font-weight-bold mb-3">最新文章</h3>
+    	<div class="work2"></div>
     </div>
     <hr>
 			<h2 class="text-info mt-5 font-weight-bold mb-5">相關職缺</h2>
@@ -290,7 +291,8 @@ $(function(){
 			data:{
 				tCount:3,
 				duty:duty.substr(duty.indexOf("d0")+3),
-				kind:1
+				kind:"1,2,3",
+				sort:"frequent"
 			},
 			dataType:"json",
 			success:function(datas){
@@ -299,7 +301,40 @@ $(function(){
 						$(".work").append("目前尚無資訊");
 					}else{
 					let work_content = "<div class='mb-5'><h5 class='font-weight-bold'>"+data.title+"</h5><div>"+data.content.replace(/<[^>]*>/g, "").substring(0,100)+"......<a href='"+data.link+"' target='_blank' >(閱讀更多...)</a></div>";
+						
+						
+						
+						
 				$(".work").append(work_content);
+					}
+				})
+				
+			},
+			error:function(){
+				console.log("error");
+				$(".work").append("目前尚無資訊");
+			}
+		})
+		$.ajax({
+			url:"https://www.1111.com.tw/1000w/fanshome/api_getTopics.asp",
+			data:{
+				tCount:3,
+				duty:duty.substr(duty.indexOf("d0")+3),
+				kind:"1,2,3",
+				sort:"newest"
+			},
+			dataType:"json",
+			success:function(datas){
+				datas.forEach(function(data){
+					if(data==""){
+						$(".work").append("目前尚無資訊");
+					}else{
+					let work_content = "<div class='mb-5'><h5 class='font-weight-bold'>"+data.title+"</h5><div>"+data.content.replace(/<[^>]*>/g, "").substring(0,100)+"......<a href='"+data.link+"' target='_blank' >(閱讀更多...)</a></div>";
+						
+						
+						
+						
+				$(".work2").append(work_content);
 					}
 				})
 				
