@@ -13,7 +13,7 @@
     if($cat=="all"){
 //        $sql = "SELECT * FROM `categories` WHERE c_level=3 AND c_name LIKE '%$search%' OR c_keywords LIKE '%$search%' ";
 		$sql = "SELECT * FROM `categories` LEFT JOIN `jobs` ON categories.c_id = jobs.c_id AND jobs.create_datetime = (SELECT MAX(create_datetime) FROM `jobs` WHERE c_id=categories.c_id)
-WHERE c_level = 3 AND (c_name LIKE '%$search%' OR c_keywords LIKE '%$search%' OR j_define LIKE '%$search%') ORDER BY c_name LIKE '%$search%' DESC";
+WHERE c_level = 3 AND (c_name LIKE '%$search%' OR c_keywords LIKE '%$search%' OR j_define LIKE '%$search%' OR j_content LIKE '%$search%' OR j_ability LIKE '%$search%') ORDER BY c_name LIKE '%$search%' DESC";
         $result = mysqli_query($conn,$sql);
         $nums = mysqli_num_rows($result);
 
@@ -32,8 +32,6 @@ WHERE c_level = 3 AND (c_name LIKE '%$search%' OR c_keywords LIKE '%$search%' OR
 
 		$sub_cname = substr($cname,0,50);
 		$sub_cname = str_replace($search,"<span style='color:red'>".$search."</span>",$sub_cname);
-		$define = $row["j_define"];
-		$define = str_replace($search,"<b style='color:red'>".$search."</b>",$define);
     ?>
         <h4>
             <a href="detail.php?cid=<?php echo $row["c_id"];?>&cname=<?php echo $row["c_name"];?>&d0=<?php echo $row["c_no"]?>&s=true" class="text-info">
@@ -42,7 +40,6 @@ WHERE c_level = 3 AND (c_name LIKE '%$search%' OR c_keywords LIKE '%$search%' OR
 				?>
             </a>
         </h4>
-		<p><?php echo $define;?></p>
     <?php
 		
         }
@@ -67,13 +64,11 @@ WHERE c_level = 3  AND c_list1 = '$cat'  AND ( c_name LIKE '%$search%' OR c_keyw
 
 		$sub_cname = substr($cname,0,50);
 		$sub_cname = str_replace($search,"<span style='color:red'>".$search."</span>",$sub_cname);
-		$define = $row["j_define"];
-		$define = str_replace($search,"<b style='color:red'>".$search."</b>",$define);
     ?>
         <h4 >
             <a href="detail.php?cid=<?php echo $row["c_id"];?>&cname=<?php echo $row["c_name"];?>&d0=<?php echo $row["c_no"]?>&s=true" class="text-info"><?php echo $sub_cname;?></a>
         </h4>
-    	<p><?php echo $define;?></p>
+    
     <?php        
     
         }
