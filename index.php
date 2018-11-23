@@ -55,7 +55,7 @@
     <div class="row pb-2 pb-md-5">
         <div class="col-md-12">
             <h2 class="text-center d-none d-md-block">工作職務百科</h2>
-			<p class="text-center">請點選以下類別</p>
+			<p class="text-center"> 請點選以下類別 </p>
         </div>
     </div>
     <div class="row py-3 align-items-center no-gutters">
