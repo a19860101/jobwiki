@@ -7,7 +7,7 @@
         // if(isset($_POST["user"]) && isset($_POST["pw"])){
 
             $name = $_POST["name"];
-            $pw = $_POST["pw"];
+            $pw = md5($_POST["pw"]);
 
             $sql = "SELECT * FROM `members` WHERE m_name= '$name'";
             $result = mysqli_query($conn,$sql);
@@ -24,7 +24,22 @@
                 if($_SESSION["LEVEL"]==1){
                     header("Location:backend/index.php");
                 }else{
-                    header("Location:index.php");
+					switch($_POST["url"]){
+						case "":
+							header("Location:index.php");
+							break;
+						case "errcode=1":
+							header("Location:index.php");
+							break;
+						default:
+							header("Location:{$_POST['url']}");
+					}
+//					if($_POST["url"]==""){
+//						header("Location:index.php");
+//					}else{
+//						header("Location:{$_POST['url']}");
+//					}
+                    
                 }
                 // switch($_SESSION["LEVEL"]){
                 //     case 0:

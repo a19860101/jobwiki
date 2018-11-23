@@ -2,6 +2,8 @@
     require_once "config/database.php";
     include "include/header.php";
     #include "include/nav.php";
+	$i = $_SERVER["QUERY_STRING"];
+	$address = $_SERVER['REQUEST_URI'];
 ?>
 <div class="container py-5">
     <div class="row py-5 align-items-center">
@@ -30,7 +32,9 @@
                         <input type="password" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" name="pw">
                     </div>
                 </div>
+                <input type="hidden" value="<?php echo $i;?>" name="url">
                 <input type="submit" class="btn btn-outline-dark btn-sm" value="登入">
+                <a href="forget.php" class="btn btn-outline-warning btn-sm">忘記密碼</a>
             </form>
         </div>
         
@@ -61,6 +65,14 @@
                 break;
         }
     }
+	if(isset($_GET["reset"])){
+		switch($_GET["reset"]){
+			case 0:
+				echo "<div class='alert alert-info position-fixed rounded-0' role='info'>重設成功。請重新登入</div>";
+                // echo "請輸入帳號密碼";
+                break;
+		}
+	}
     // if(isset($_GET["errcode"])&&$_GET["errcode"]==0){
     //     echo "請輸入帳號密碼";
     // }

@@ -1,8 +1,12 @@
 <?php
+// $host = "localhost";
+// $user = "admin";
+// $pw = "admin";
+// $db = "lcclcclc_jobwiki";
 $host = "localhost";
-$user = "admin";
-$pw = "admin";
-$db = "lcclcclc_jobwiki";
+$user = "jobwiki_org";
+$pw = "Pmu852Ts67";
+$db = "jobwiki_org";
 
 $conn = new mysqli($host,$user,$pw,$db);
 

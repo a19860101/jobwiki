@@ -1,19 +1,8 @@
 <?php
     function access_denied(){
-        $level = $_SESSION["LEVEL"];
-        // switch($_SESSION["LEVEL"]){
-        //     case 0:
-        //         header("Location:../index.php");
-        //         break;
-        //     case 1:
-        //         header("Location:../backend/index.php");
-        //         break;
-        //     // default:
-        //         // header("Location");
+        // $level = $_SESSION["LEVEL"];
         // }
-        if(!isset($level)||$level==0){
+        if(!isset($_SESSION["NAME"])){
             header("Location:../index.php");
         }
-
-        // echo "test";
     }

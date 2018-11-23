@@ -15,7 +15,21 @@
         $sql = "INSERT INTO `categories`(c_list1,c_list2,c_name,c_no)VALUES('$l1','$l2','$job','$no')";
         mysqli_query($conn,$sql);
     }
+	if(isset($_POST["keywords"])){
+		$ckeywords = $_POST["ckeywords"];
+		$cid = $_POST["cid"];
+		$sql_keywords = "UPDATE `categories` SET c_keywords = '$ckeywords' WHERE c_id =".$cid;
+		mysqli_query($conn,$sql_keywords);
+	}
+	if(isset($_POST["updateName"])){
+		$cname = $_POST["cname"];
+		$cid = $_POST["cid"];
+		$sql_keywords = "UPDATE `categories` SET c_name = '$cname' WHERE c_id =".$cid;
+		mysqli_query($conn,$sql_keywords);
+	}
 ?>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 <!--內容-->
 <div class="container">
     <div class="row">
@@ -46,17 +60,44 @@
     </form>
     <hr>
     <?php
-        $sql_1 = "SELECT c_name,c_id FROM `categories`";
+        $sql_1 = "SELECT * FROM `categories` WHERE c_level = 3";
         $result_1 = mysqli_query($conn,$sql_1);
     ?>
     <h3>所有職務</h3>
-    <ul class="nav flex-column">
+<!--    <ul class="nav flex-column">-->
+       <table id="myTable" class="display">
+       	<thead>
+       		<tr>
+       			<th>職務名稱</th>
+       			<th>職務代碼</th>
+       			<th>關鍵字</th>
+       		</tr>
+       	</thead>
+       	<tbody>
         <?php while($row_1=mysqli_fetch_assoc($result_1)){?>
-        <li class="nav-item dropdown">
-            <a href="job_detail.php?id=<?php echo $row_1["c_id"];?>"><?php echo $row_1["c_name"];?></a>
-        </li>
+           <tr>
+           		<td>
+<!--           		<a href="job_detail.php?id=<?php #echo $row_1["c_id"];?>"><?php #echo $row_1["c_name"];?></a>-->
+          			<form action="" method="post">
+           			<input type="text" value="<?php echo $row_1["c_name"];?>" name="cname">
+           			<input type="hidden" name="cid" value="<?php echo $row_1["c_id"];?>">
+					<input type="submit" name="updateName" value="修改">
+					</form>
+           		</td>
+           		<td><?php echo $row_1["c_no"];?></td>
+           		<td>
+					<form action="" method="post">
+						<input type="text" name="ckeywords" value="<?php echo $row_1["c_keywords"];?>">
+						<input type="hidden" name="cid" value="<?php echo $row_1["c_id"];?>">
+						<input type="submit" name="keywords" value="修改">
+					</form>
+			  	</td>
+           </tr>
+            
         <?php }?>
-    </ul>
+        </tbody>
+        </table>
+<!--    </ul>-->
 
 </div>
 </div>
@@ -122,3 +163,11 @@ navigator.appName == "Microsoft Internet Explorer" ? attachEvent('onload', init,
 </script>
 <!---->
 <?php include "include/footer.php"; ?>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+$(function(){
+	$('#myTable').DataTable({
+		"pageLength": 50
+	});
+})
+</script>

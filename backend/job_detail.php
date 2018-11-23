@@ -5,8 +5,11 @@
     include "include/header.php";
     include "include/nav.php";
     include "include/sidebar.php";
+
 ?>
 <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <div class="container">
     <div class="row">
         <?php 
@@ -30,7 +33,8 @@
                     if(isset($_POST["edit"])){
                         $define = $_POST["define"];
                         $content = $_POST["content"];
-                        $similar = $_POST["similar"];
+                        $similars = $_POST["similar"];
+						$similar = implode(",",$similars);
                         $ability = $_POST["ability"];
                         $salary = $_POST["salary"];
                         $worktime = $_POST["worktime"];
@@ -82,7 +86,9 @@
             </div>
             <div class="form-group">
                 <label>相似職務</label>
-                <textarea class="form-control" rows="10" name="similar" id="similar"></textarea>
+<!--                <textarea class="form-control" rows="10" name="similar" id="similar"></textarea>-->
+				<input type="text" name="similar" id="similar">
+				<div id="display"></div>
             </div>
             <div class="form-group">
                 <label>須具備專業能力</label>
@@ -121,9 +127,31 @@
                 <label>工作內容</label>
                 <textarea class="form-control" rows="10" name="content" id="editor"><?php echo $row["j_content"];?></textarea>
             </div>
-            <div class="form-group">
-                <label>相似職務</label>
-                <textarea class="form-control" rows="10" name="similar" id="similar"><?php echo $row["j_similar"];?></textarea>
+            <div class="form-group ui-widget">
+                <legend>相似職務</legend>
+                
+				<?php
+						$sql_s = "SELECT * FROM `categories`";
+						$result_s = mysqli_query($conn,$sql_s);
+							
+						$ss = explode(",",$row["j_similar"]);
+//						foreach($ss as $s){
+//							if($s == $row_s["c_name"]){echo "checked"}
+//						}
+						while($row_s = mysqli_fetch_assoc($result_s)){
+						
+				?>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="checkbox" id=""value="<?php echo $row_s["c_name"];?>" name="similar[]" <?php foreach($ss as $s){
+							if($s == $row_s["c_name"]){echo "checked";}
+						}?>>
+					  <label class="form-check-label"><?php echo $row_s["c_name"];?></label>
+					</div>
+				<?php
+						}
+				?>
+				
+		
             </div>
             <div class="form-group">
                 <label>須具備專業能力</label>
@@ -159,7 +187,7 @@
 </div>
 <script>
     CKEDITOR.replace( 'editor' );
-    CKEDITOR.replace( 'similar' );
+//    CKEDITOR.replace( 'similar' );
     CKEDITOR.replace( 'salary' );
     CKEDITOR.replace( 'worktime' );
     CKEDITOR.replace( 'ability' );
@@ -167,3 +195,4 @@
     CKEDITOR.replace( 'path' );
 </script>
 <?php include "include/footer.php"; ?>
+

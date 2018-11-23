@@ -1,7 +1,7 @@
 <?php
     require_once "config/database.php";
     $name = $_POST["name"];
-    $pw = $_POST["pw"];
+    $pw = md5($_POST["pw"]);
     $fullname = $_POST["fullname"];
     $gender = $_POST["gender"];
     $phone = $_POST["phone"];
@@ -19,5 +19,5 @@
     $sql = "INSERT INTO `members` (m_name,m_pw,m_fullname,m_gender,m_phone,m_mail,create_date)
             VALUES('$name','$pw','$fullname','$gender','$phone','$mail',NOW())"; 
     mysqli_query($conn,$sql);
-    header("Location:index.php");
+    header("Location:index.php?reg=success");
     }
