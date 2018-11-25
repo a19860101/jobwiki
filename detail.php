@@ -193,9 +193,9 @@
     <div class="works">
     	<h2 class="text-info mt-5 font-weight-bold">工作經驗談</h2>
     	<hr>
-		<h3 style="font-size:24px" class="font-weight-bold mb-3">熱門文章</h3>
+		<h3 style="font-size:24px" class="font-weight-bold mb-1">熱門文章</h3>
     	<div class="work"></div>
-		<h3 style="font-size:24px" class="font-weight-bold mb-3">最新文章</h3>
+		<h3 style="font-size:24px" class="font-weight-bold mb-1">最新文章</h3>
     	<div class="work2"></div>
     </div>
     <hr>
@@ -300,7 +300,7 @@ $(function(){
 					if(data==""){
 						$(".work").append("目前尚無資訊");
 					}else{
-					let work_content = "<div class='mb-5'><h5 class='font-weight-bold'>"+data.title+"</h5><div>"+data.content.replace(/<[^>]*>/g, "").substring(0,100)+"......<a href='"+data.link+"' target='_blank' >(閱讀更多...)</a></div>";
+					let work_content = "<div class='mb-3 w-item'><h5 class='font-weight-bold'>"+data.title+"</h5><div>"+data.content.replace(/<[^>]*>/g, "").substring(0,100)+"......<a href='"+data.link+"' target='_blank' >(閱讀更多...)</a></div>";
 						
 						
 						
@@ -329,7 +329,7 @@ $(function(){
 					if(data==""){
 						$(".work").append("目前尚無資訊");
 					}else{
-					let work_content = "<div class='mb-5'><h5 class='font-weight-bold'>"+data.title+"</h5><div>"+data.content.replace(/<[^>]*>/g, "").substring(0,100)+"......<a href='"+data.link+"' target='_blank' >(閱讀更多...)</a></div>";
+					let work_content = "<div class='mb-3 w-item'><h5 class='font-weight-bold'>"+data.title+"</h5><div>"+data.content.replace(/<[^>]*>/g, "").substring(0,100)+"......<a href='"+data.link+"' target='_blank' >(閱讀更多...)</a></div>";
 						
 						
 						
