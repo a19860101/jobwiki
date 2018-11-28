@@ -2,7 +2,7 @@
 <form action="search.php" method="get">
         <div class="form-row  py-3">
             <div class="col-md-5">
-                <input type="text" class="form-control" name="search" value="<?php echo $_GET["search"];?>">
+                <input type="text" class="form-control" name="search" value="<?php echo $_GET["search"];?>" placeholder="請輸入職缺關鍵字">
                 <?php
                     $sql_hot = "SELECT search_name,count(*) AS count FROM `search` GROUP BY search_name ORDER BY count DESC LIMIT 5";
                     $result_hot = mysqli_query($conn,$sql_hot);

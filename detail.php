@@ -71,10 +71,12 @@
             <p>
                 <?php echo $row_detail["j_define"];?>
             </p>
+			<hr>
             <h4  class="mt-5">工作內容</h4>
             <p class="pl-3">
                 <?php echo $row_detail["j_content"];?>
             </p>
+		<hr>
             <h4  class="mt-5">相似職務</h4>
             <p>
                 <?php# echo $row_detail["j_similar"];?>
@@ -84,16 +86,20 @@
 					}else{
 						$similars = explode(",",$row_detail["j_similar"]);
 						foreach($similars as $s){
+							
 							$ss = "SELECT * FROM `categories` WHERE c_name='$s'";
 							$rr = mysqli_query($conn,$ss);
 							$rro = mysqli_fetch_assoc($rr);
+							if($_GET["cname"]!=$rro["c_name"]){
 							if(isset($rro["c_id"])){
-							echo "<a href='detail.php?cid={$rro["c_id"]}&cname={$rro["c_name"]}&d0={$rro["c_no"]}'>{$s}</a> &nbsp;";
+							echo "<a href='detail.php?cid={$rro["c_id"]}&cname={$rro["c_name"]}&d0={$rro["c_no"]}' target='_blank'>{$s}</a> &nbsp;";
+							}
 							}
 						}
 					}
 				?>
             </p>
+		<hr>
             <h4  class="mt-5">須具備專業能力</h4>
             <p>
                
@@ -105,6 +111,7 @@
 					}
 				?>
             </p>
+		<hr>
             <h4 class="mt-5">相關證照</h4>
             <p>
             	<?php
@@ -118,6 +125,7 @@
 					}
 				?>
             </p>
+		<hr>
             <!--
             <h4  class="mt-5">薪資區間</h4>
             <p>
@@ -185,10 +193,12 @@
 //					echo "</div>";
 				?>
             </div>
+		<hr>
             <h4  class="mt-5">學歷分布</h4>
             <p>
                 <?php echo $row_detail["j_edu"];?>
             </p>
+		<hr>
     </div>
     <div class="works">
     	<h2 class="text-info mt-5 font-weight-bold">工作經驗談</h2>
@@ -202,7 +212,7 @@
 			<h2 class="text-info mt-5 font-weight-bold mb-5">相關職缺</h2>
     <div class="careers row position-relative">
 <!--    	<div class="text-right">-->
-			<a href="https://www.1111.com.tw/job-bank/job-index.asp?si=1&d0=<?php echo $_GET["d0"];?>" class="btn btn-info my-4 position-absolute" target="_blank" style="right:15px;top: -90px">觀看更多職缺</a>
+			<a href="https://www.1111.com.tw/job-bank/job-index.asp?si=1&d0=<?php echo $_GET["d0"];?>" class="btn btn-info my-4 position-absolute" target="_blank" style="right:15px;bottom: -60px">觀看更多職缺</a>
 <!--	</div>-->
     	<div class="spinner"></div>
     </div>
@@ -341,7 +351,7 @@ $(function(){
 			},
 			error:function(){
 				console.log("error");
-				$(".work").append("目前尚無資訊");
+				$(".work2").append("目前尚無資訊");
 			}
 		})
 		function get_content() {

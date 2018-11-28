@@ -4,6 +4,11 @@
     include "include/nav.php";
 
 ?>
+<style>
+	a:hover {
+		color: #fa0!important;
+	}
+</style>
 <div class="container d-block d-md-none" id="logo">
 	<div class="row align-items-center">
 		<div class="col">
@@ -52,7 +57,7 @@
     </form>
 </div>
 <div class="container position-relative">
-    <div class="row pb-2 pb-md-5">
+    <div class="row pb-2 pb-md-0">
         <div class="col-md-12">
             <h2 class="text-center d-none d-md-block">工作職務百科</h2>
 			<p class="text-center"> 請點選以下類別 </p>
@@ -99,7 +104,7 @@
     <form action="search.php" method="get">
         <div class="form-row justify-content-center py-3">
             <div class="col-md-5">
-                <input type="text" class="form-control" name="search">
+                <input type="text" class="form-control" name="search" placeholder="請輸入職缺關鍵字">
                 <?php
                     $sql_hot = "SELECT search_name,count(*) AS count FROM `search` GROUP BY search_name ORDER BY count DESC LIMIT 5";
                     $result_hot = mysqli_query($conn,$sql_hot);
