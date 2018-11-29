@@ -106,7 +106,7 @@
     <hr>
     <h4 class="text-info mt-5 font-weight-bold mb-5 rel_careers">相關職缺</h4>
     <div class="careers row mt-5 position-relative">
-    	<a href="https://www.1111.com.tw/job-bank/job-index.asp?si=1&d0=<?php echo $_GET["d0"];?>" class="btn btn-info my-4 position-absolute" target="_blank" style="right:15px;top: -90px">觀看更多職缺</a>
+    	<a href="https://www.1111.com.tw/job-bank/job-index.asp?si=1&d0=<?php echo $_GET["d0"];?>" class="btn btn-info my-4 position-absolute" target="_blank" style="right:15px;bottom: -60px">觀看更多職缺</a>
     	<div class="spinner"></div>
     </div>
 
@@ -152,7 +152,7 @@ $(function(){
 					}else {
 						grade = d.grade.substr(d.grade.indexOf("_")+1);
 					}
-                     let content = "<div class='col-xl-3 mb-4'><div class='career border p-3'><h5><a href='"+d.link+"' target='_blank'>"+d.position0.substr(0,20)+"</a></h5><p class='text-muted'><a href='"+d.organ_link+"' class='text-info' target='_blank'>"+d.organs_organ.substr(0,15)+"</a></p><div><small>"+d.salary+"/"+exp+"/"+grade+"</small></div><a href='"+d.link+"' target='_blank' class='btn btn-outline-dark go'>馬上投履歷</a></div></div>";
+                     let content = "<div class='col-xl-3 mb-4'><div class='career border p-3'><h5><a href='"+d.link+"' target='_blank'>"+d.position0.substr(0,20)+"</a></h5><p class='text-muted mb-1'><a href='"+d.organ_link+"' class='text-info' target='_blank'>"+d.organs_organ.substr(0,15)+"</a></p><div><small>"+d.salary+"/"+exp+"/"+grade+"</small></div><a href='"+d.link+"' target='_blank' class='btn btn-outline-dark go'>馬上投履歷</a></div></div>";
                     $(".careers").append(content);
                 }) 
             },

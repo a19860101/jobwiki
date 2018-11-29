@@ -94,6 +94,8 @@
 							if(isset($rro["c_id"])){
 							echo "<a href='detail.php?cid={$rro["c_id"]}&cname={$rro["c_name"]}&d0={$rro["c_no"]}' target='_blank'>{$s}</a> &nbsp;";
 							}
+							}else{
+								echo "目前尚無資訊";
 							}
 						}
 					}
@@ -301,7 +303,8 @@ $(function(){
 			data:{
 				tCount:3,
 				duty:duty.substr(duty.indexOf("d0")+3),
-				kind:"1,2,3",
+//				kind:"1,2,3",
+				q:"樂在工作,工作甘苦,面試經驗",
 				sort:"frequent"
 			},
 			dataType:"json",
@@ -330,8 +333,9 @@ $(function(){
 			data:{
 				tCount:3,
 				duty:duty.substr(duty.indexOf("d0")+3),
-				kind:"1,2,3",
-				sort:"newest"
+//				kind:"1",
+				q:"樂在工作,工作甘苦,面試經驗"
+//				sort:"newest"
 			},
 			dataType:"json",
 			success:function(datas){
